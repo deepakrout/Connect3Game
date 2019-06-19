@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Connect3Game</string>
+    <string name="imageOne">Image One Description</string>
+    <string name="imageTwo">Image Two Description</string>
+    <string name="imageThree">Image Three Description</string>
+    <string name="imageFour">Image Four Description</string>
+    <string name="imageFive">Image Five Description</string>
+    <string name="imageSix">Image Six Description</string>
+    <string name="imageSeven">Image Seven Description</string>
+    <string name="imageEight">Image Eight Description</string>
+    <string name="imageNine">Image Nine Description</string>
+    <string name="buttonText">Play Again</string>
+</resources>
