@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.GridLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -14,7 +15,7 @@ public class MainActivity extends AppCompatActivity {
     // 0 Yellow and 1 - Red, 2 - empty
 
     int activePlayer = 0;
-    int[] gameState = {2,2,2,2,2,2,2,2,2};
+    int[] gameState = {2, 2, 2, 2, 2, 2, 2, 2, 2};
     int[][] winningPositions = {{0, 1, 2} , {3, 4, 5}, {6, 7, 8},  {0, 3, 6}, {1, 4, 7}, {2, 5, 8}, {0, 4, 8}, {2, 4, 6}};
 
     boolean gameActive = true;
@@ -57,16 +58,50 @@ public class MainActivity extends AppCompatActivity {
                     playAgainButton.setVisibility(View.VISIBLE);
                     winnerTextView.setVisibility(View.VISIBLE);
                 }
+                else if (isAllDone()) {
+                    Toast.makeText(this, "No One is winner!", Toast.LENGTH_LONG).show();
+                    Button playAgainButton = (Button) findViewById(R.id.playAgainButton);
+                    TextView winnerTextView = (TextView) findViewById(R.id.winnerTextView);
+
+                    winnerTextView.setText("No one won!");
+
+                    playAgainButton.setVisibility(View.VISIBLE);
+                    winnerTextView.setVisibility(View.VISIBLE);
+                }
             }
+
+
         }
 
     }
 
-    public void playAgain(View btnView){
+    private boolean isAllDone() {
+        boolean allDone = true;
+        for (int i=0; i< gameState.length; i++){
+            if (gameState[i] == 2)
+                allDone = false;
+        }
+        return allDone;
+    }
+
+    public void playAgain(View btnView) {
         Button playAgainButton = (Button) findViewById(R.id.playAgainButton);
         TextView winnerTextView = (TextView) findViewById(R.id.winnerTextView);
         playAgainButton.setVisibility(View.INVISIBLE);
         winnerTextView.setVisibility(View.INVISIBLE);
+        android.support.v7.widget.GridLayout gridLayout = (android.support.v7.widget.GridLayout) findViewById(R.id.gameGridLayout);
+
+        for (int i = 0; i < gridLayout.getChildCount(); i++) {
+            ImageView counters = (ImageView) gridLayout.getChildAt(i);
+            counters.setImageDrawable(null);
+
+        }
+
+        for (int i=0; i< gameState.length; i++){
+            gameState[i] = 2;
+        }
+        activePlayer = 0;
+        gameActive = true;
     }
 
     @Override

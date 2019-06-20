@@ -10,4 +10,5 @@
     <string name="imageEight">Image Eight Description</string>
     <string name="imageNine">Image Nine Description</string>
     <string name="buttonText">Play Again</string>
+    <string name="winnerMessage"></string>
 </resources>
